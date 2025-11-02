@@ -1,13 +1,6 @@
 # shellcheck shell=bash
 bd () {
-  (($#<1)) && {
-    printf -- 'usage: %s <name-of-any-parent-directory>\n' "${0}"
-    printf -- '       %s <number-of-folders>\n' "${0}"
-
-    return 1
-  } >&2
-
-  local requestedDestination="${1}"
+  local requestedDestination="${1:-1}"
   local -a parents=(${(ps:/:)"${PWD}"})
   local numParents
   local dest
